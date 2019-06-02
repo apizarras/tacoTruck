@@ -1,0 +1,35 @@
+<h1>Taco Bueno</h1>
+
+<p>Order your taco and taco preferences.</p>
+
+<!-- Pass in data from server.js -->
+<ul>
+  {{#each tacos}}
+  	<li>
+  		<p><span class="label">Taco Name:</span> {{this.taco}}</p>
+      <p><span class="label">Shell:</span> {{this.shell}}</p>
+      <p><span class="label">Vegetarian:</span> {{this.vegetarian}}</p>
+
+      <button data-id="{{this.id}}" class="delTaco">Delete</button>
+
+      <a href="/{{this.id}}">Update this quote</a>
+  	</li>
+  {{/each}}
+</ul>
+
+<h2>Add a Quote</h2>
+
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="taco">Taco:</label>
+    <input type="text" id="taco" name="tacoName">
+  </div>
+
+  <div class="form-group">
+    <label for="shell">Shell:</label>
+    <textarea id="shell" name="tacoShell" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit">Order Taco</button>
+</form>

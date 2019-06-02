@@ -1,6 +1,6 @@
-CREATE DATABASE tacosDB;
+CREATE DATABASE tacosdb;
 
-USE tacosDB;
+USE tacosdb;
 
 CREATE TABLE tacos (
 id INT AUTO_INCREMENT NOT NULL,
