@@ -2,6 +2,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection.js");
+const taco = require("./models/taco.js")
 
 const app = express();
 
