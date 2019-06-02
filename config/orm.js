@@ -1,12 +1,14 @@
 const path = require("path");
-const connection = require("./connection.js");
+const connection = require("../config/connection.js");
 
 const orm = {
-  select: function(whatToSelect, tableInput, returnFunction) {
-    var queryString = "SELECT ?? FROM ??";
-    connection.query(queryString, [whatToSelect, tableInput], function(err, result) {
-      if (err) throw err;
+  select: function(tableInput, returnFunction) {
+    var queryString = "SELECT * FROM" + tableInput + ";";
+    connection.query(queryString, function(err, restuls) {
+      if (err) {
+        throw err;
       console.log(result);
+      }
         returnFunction(result);
     });
   },
