@@ -1,0 +1,14 @@
+.split {
+    height: 100%;
+    width: 50%;
+}
+
+.left {
+    float: left;
+    background-color: goldenrod
+}
+
+.right {
+    float: right;
+    background-color: lightblue
+}

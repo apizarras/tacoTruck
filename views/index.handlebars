@@ -1,8 +1,9 @@
 <h1>Taco Bueno</h1>
 
-<p>Order your taco and taco preferences.</p>
+<p>Order your taco and list taco preferences.</p>
 
 <!-- Pass in data from server.js -->
+<div class="split left">
 <ul>
   {{#each tacos}}
   	<li>
@@ -16,7 +17,11 @@
   	</li>
   {{/each}}
 </ul>
+</div>
 
+<div class="split right">
+  Right side stuff
+</div>
 <h2>Add a Taco</h2>
 
 <form class="create-form">
@@ -32,8 +37,9 @@
   </div>
 
   <div class="form-group">
-    <label for="shell">Vegetarian:</label>
-    <input type"number" id="veg" name="vegetarian"></input>
+    <label for="veg">Vegetarian?</label>
+    <input type="radio" id="veg" name="vegetarian" value="1" checked>Yes!</input>
+    <input type="radio" name="vegetarian" value="0">No....</input>
   </div>
 
   <button type="submit">Order Taco</button>

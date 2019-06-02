@@ -2,7 +2,9 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const connection = require("./config/connection.js");
-const taco = require("./models/taco.js")
+const taco = require("./models/taco.js");
+const path = require("path");
+
 
 const app = express();
 
@@ -13,6 +15,7 @@ app.set("view engine", "handlebars");
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+app.use(express.static("."));
 
 const routes = require("./controllers/tacos_controller.js");
 
