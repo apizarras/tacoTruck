@@ -1,4 +1,3 @@
-const path = require("path");
 const connection = require("../config/connection.js");
 
 function questionMarks(num) {
@@ -52,7 +51,18 @@ const orm = {
       cb(res);
     });
   },
+  delete: function(table, condition, cb) {
+    const queryString = "DELETE FROM " + table;
+    queryString += " WHERE";
+    queryString += condition;
 
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  }
 
 };
 
