@@ -5,6 +5,7 @@ function questionMarks(num) {
   for(i=0;i<num;i++) {
     arr.push("?");
   }
+  console.log("questionmarks array: " + arr);
   return arr.toString();
 }
 
@@ -35,17 +36,10 @@ const orm = {
   },
   create: function(table, cols, vals, cb) {
     console.log("these are the vals: " +vals);
-    let queryString = "INSERT INTO " + table;
 
-    queryString =+ " (";
-    queryString =+ cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += questionMarks(vals.length);
-    queryString += ") ";
+    let queryString = "INSERT INTO " + table + " (" + cols.toString() + ") " + "VALUES (" + questionMarks(vals.length) +") ";
 
-    console.log("this is INSERT INTO: " + queryString);
-
+    console.log("this is 2nd queryString: " + queryString);
     connection.query(queryString, vals, function(err, res) {
       if(err) {
         throw err;
