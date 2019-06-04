@@ -34,6 +34,7 @@ const orm = {
         returnFunction(result);
     });
   },
+
   create: function(table, cols, vals, cb) {
     console.log("these are the vals: " +vals);
 
