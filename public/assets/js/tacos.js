@@ -17,3 +17,17 @@ console.log(newTaco);
         })
     });
 });
+
+$(function() {
+    $(".delTaco").on("click", function(event) {
+        event.preventDefault();
+        let id = $(this).data("id");
+
+        $.ajax("/api/tacos/" + id, {
+            type: "DELETE"
+        }).then(function() {
+            console.log("deleted taco id = " + id);
+            location.reload();
+        });
+    });
+});
