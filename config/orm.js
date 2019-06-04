@@ -13,14 +13,15 @@ function objToSql(ob) {
   for(key in ob) {
     let value = ob[key];
     if(Object.hasOwnProperty.call(ob, key)) {
-      if(typeofvalue === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + valule + "'";
+      if(typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
       }
       arr.push(key + "=" + value);
     }
   }
   return arr.toString();
 }
+
 const orm = {
   all: function(tableInput, returnFunction) {
     const queryString = "SELECT * FROM " + tableInput + ";";
@@ -33,7 +34,8 @@ const orm = {
     });
   },
   create: function(table, cols, vals, cb) {
-    const queryString = "INSERT INTO " + table;
+    console.log("these are the vals: " +vals);
+    let queryString = "INSERT INTO " + table;
 
     queryString =+ " (";
     queryString =+ cols.toString();
@@ -42,7 +44,7 @@ const orm = {
     queryString += questionMarks(vals.length);
     queryString += ") ";
 
-    console.log(queryString);
+    console.log("this is INSERT INTO: " + queryString);
 
     connection.query(queryString, vals, function(err, res) {
       if(err) {
@@ -51,8 +53,25 @@ const orm = {
       cb(res);
     });
   },
+  update: function(table, objColVals, condition, cb) {
+    let queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
+
+    console.log(queryString);
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);;
+    })
+  },
   delete: function(table, condition, cb) {
-    const queryString = "DELETE FROM " + table;
+    let queryString = "DELETE FROM " + table;
     queryString += " WHERE";
     queryString += condition;
 

@@ -1,13 +1,13 @@
 $(function() {
     $(".create-form").on("submit", function(event) {
         event.preventDefault();
-console.log("clicked submit for this: " + taco);
+console.log("clicked submit for this taco");
         const newTaco = {
             taco: $("#taco").val().trim(),
             shell: $("#shell").val().trim(),
-            vegetarian: $("#veg")
+            vegetarian: $("#veg").val().trim()
         };
-
+console.log(newTaco);
         $.ajax("/api/tacos", {
             type: "POST",
             data: newTaco

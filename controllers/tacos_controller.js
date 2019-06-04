@@ -16,6 +16,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/tacos", function(req, res) {
+    console.log("/api/tacos");
     taco.create([
         "taco", "shell", "vegetarian"
     ],[
