@@ -49,12 +49,7 @@ const orm = {
     });
   },
   update: function(table, objColVals, condition, cb) {
-    let queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
+    let queryString = "UPDATE " + table + " SET " + objToSql(objColVals) + " WHERE " + condition;
 
     console.log(queryString);
 
@@ -65,6 +60,7 @@ const orm = {
       cb(result);;
     })
   },
+
   delete: function(table, condition, cb) {
     let queryString = "DELETE FROM " + table + " WHERE " + condition;
     console.log("this is delete query string: " + queryString)

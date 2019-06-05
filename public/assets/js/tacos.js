@@ -32,8 +32,19 @@ $(function() {
     });
 });
 
-// $(function() {
-//     $(".pickTaco").on("click", function(event) {
-
-//     })
-// })
+$(function() {
+    $(".pickTaco").on("click", function(event) {
+        event.preventDefault();
+        let id = $(this).data("id");
+        let newPickup = $(this).data("newpickup");
+        console.log("pickup value: " + newPickup);
+        
+        $.ajax("/api/tacos/" + id, {
+            type: "PUT",
+            pickup: newPickup
+        }).then(function() {
+            console.log("pickup? " + data);
+            location.reload();
+        })
+    })
+})
