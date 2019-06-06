@@ -1,62 +1,78 @@
-<h1>Taco Bueno</h1>
+<div class="jumbotron m-5 bckimg">
+<h1 class="text-center">Taco Bueno</h1>
 
-<p>Order your taco and list taco preferences.</p>
+<h4>Order your taco and list taco preferences.</h4>
 
 <h2>Add a Taco</h2>
 
 <form class="create-form">
 
   <div class="form-group">
-    <label for="taco">Taco:</label>
-    <input type="text" id="taco" name="tacoName">
+    <label for="taco" class="font-weight-bold">Taco:</label>
+    <input type="text" id="taco" class="form-control" name="tacoName">
   </div>
 
   <div class="form-group">
-    <label for="shell">Shell:</label>
-    <input type"text" id="shell" name="tacoShell"></input>
+    <label for="shell" class="font-weight-bold">Shell:</label>
+    <input type"text" id="shell" class="form-control" name="tacoShell"></input>
   </div>
 
   <div class="form-group">
-    <label for="veg">Vegetarian?</label>
-    <input type="text" id="veg" name="vegetarian"></input>
+    <label for="veg" class="font-weight-bold">Vegetarian?</label>
+    <input type="text" id="veg" class="form-control" name="vegetarian"></input>
   </div>
 
   <button type="submit">Order Taco</button>
 </form>
+</div>
 <br>
 
 <!-- Pass in data from server.js -->
-<div class="split left">
+<div class="split left ml-1 mr-2">
   <h2>Submitted Tacos</h2>
 <ul>
+  
   {{#each tacos}}
     {{#unless pickup}}
-  	<li>
-  		<p><span class="label">Taco Name:</span> {{this.taco}}</p>
-      <p><span class="label">Shell:</span> {{this.shell}}</p>
-      <p><span class="label">Vegetarian:</span> {{this.vegetarian}}</p>
+    <li>
+    <div class="card">
+      <div class="card-header">
+        <span class="label">Taco Name:</span> {{this.taco}}
+      </div>
+        <div class="card-body">
+          <p><span class="card-text label">Shell:</span> {{this.shell}}</p>
+          <p><span class="card-text label">Vegetarian:</span> {{this.vegetarian}}</p>
+        </div>
+        <button data-id="{{this.id}}" class="delTaco">Delete</button>
 
-      <button data-id="{{this.id}}" class="delTaco">Delete</button>
-
-      <button data-id="{{this.id}}" class="pickTaco" data-newpickup="1" value="1">Pick Up Taco</button>
-  	</li>
+        <button data-id="{{this.id}}" class="pickTaco" data-newpickup="1" value="1">Pick Up Taco</button>
+    </div>
+    </li>
     {{/unless}}
   {{/each}}
+  
 </ul>
 </div>
 
-<div class="split right">
-  <h2>Tacos Ready for Pick Up!</h2>>
+<div class="split right border-left ml-1 mr-2">
+  <h2>Ready for Pick Up!</h2>
   <ul>
   {{#each tacos}}
     {{#if pickup}}
   	<li>
-  		<p><span class="label">Taco Name:</span> {{this.taco}}</p>
-      <p><span class="label">Shell:</span> {{this.shell}}</p>
-      <p><span class="label">Vegetarian:</span> {{this.vegetarian}}</p>
+    <div class="card">
+      <div class="card-header">
+        <span class="label">Taco Name:</span> {{this.taco}}
+      </div>
+      <div class="card-body">
+        <p><span class="card-text label">Shell:</span> {{this.shell}}</p>
+        <p><span class="card-text label">Vegetarian:</span> {{this.vegetarian}}</p>
+      </div>
+        <button data-id="{{this.id}}" class="delTaco">Delete</button>
 
-      <button data-id="{{this.id}}" class="delTaco">Delete</button>
-  	</li>
+        <button data-id="{{this.id}}" class="pickTaco" data-newpickup="1" value="1">Pick Up Taco</button>
+    </div>
+    </li>
     {{/if}}
   {{/each}}
 </ul>

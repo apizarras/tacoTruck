@@ -1,14 +1,22 @@
+body {
+    background-color: burlywood
+}
+
+ul {
+    list-style: none
+}
+.bckimg {
+    background-image: url("../img/tacos.jpg");
+}
 .split {
     height: 100%;
-    width: 50%;
+    width: 47%;
 }
 
 .left {
     float: left;
-    background-color: goldenrod
 }
 
 .right {
     float: right;
-    background-color: lightblue
 }
