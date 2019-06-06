@@ -50,7 +50,7 @@ const orm = {
   },
   update: function(table, objColVals, condition, cb) {
     let queryString = "UPDATE " + table + " SET " + objToSql(objColVals) + " WHERE " + condition;
-
+    console.log("objColVals: " + objColVals);
     console.log(queryString);
 
     connection.query(queryString, function(err, result) {

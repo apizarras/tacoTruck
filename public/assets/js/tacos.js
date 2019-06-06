@@ -38,10 +38,13 @@ $(function() {
         let id = $(this).data("id");
         let newPickup = $(this).data("newpickup");
         console.log("pickup value: " + newPickup);
-        
+        let pickupYes = {
+            pickup: newPickup
+        };
+
         $.ajax("/api/tacos/" + id, {
             type: "PUT",
-            pickup: newPickup
+            pickup: pickupYes
         }).then(function() {
             console.log("pickup? " + data);
             location.reload();

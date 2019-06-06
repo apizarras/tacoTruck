@@ -28,7 +28,9 @@ router.post("/api/tacos", function(req, res) {
 
 router.put("/api/tacos/:id", function (req, res) {
     let condition = "id = " + req.params.id;
+    console.log("this is req.body: " + req.body);
     console.log("condition: " + condition);
+    console.log("this is pickup val from controller: " +req.body.pickup)
     taco.update({
         pickup: req.body.pickup
     }, condition, function(result) {
